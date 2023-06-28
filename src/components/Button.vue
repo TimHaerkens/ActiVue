@@ -9,21 +9,31 @@
 button{
   cursor:pointer;
 
-  color:white;
   font-size: 1rem;
   font-weight:600;
   font-variant:small-caps;
 
-  margin-top: 1rem;
+  height:50px;
+  vertical-align:middle;
+
   border-radius: 50rem;
   padding: 1rem;
-  background:$brand-secondary;
 
-  
-  &:hover{
-    background: linear-gradient(66deg,$brand-secondary,$brand-primary,$brand-secondary);
-    background-size: 500%;
-    animation: glowing 20s linear infinite;
+  &.outline{
+    color: rgb(36, 46, 74);
+  }
+
+  &.fill{
+    color:white;
+    background:$brand-secondary;
+  }
+
+  &.glow{
+    &:hover{
+      background: linear-gradient(66deg,$brand-secondary,$brand-primary,$brand-secondary);
+      background-size: 500%;
+      animation: glowing 20s linear infinite;
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import Button from '@/components/Button.vue'
+  import Activity from '@/components/Activity.vue'
   import { useBored } from "@/bored"
   
   const boredEndpoint = 'https://www.boredapi.com/api/';
@@ -13,15 +14,10 @@
   <div class="wrapper">
     <div class="landing">
       <h1 class="gradient">Are you bored?</h1>
-      <h3>
-        Don't worry. We got you covered!
-      </h3>
+      <h3>Don't worry. We got you covered!</h3>
 
-      <Button @click="fetch(boredUrl)">Give me an activity</Button>
-
-      <div v-if="data!=null">
-        {{ data }}
-      </div>
+      <Button v-if="data==null" @click="fetch(boredUrl)" class="glow fill">Give me an activity</Button>
+      <Activity v-if="data!=null" :activity="data" />
 
     </div>
   </div>
@@ -37,6 +33,8 @@ h1 {
 
 h3 {
   font-size: 1.2rem;
+  margin-bottom: 1rem;
+
 }
 
 .landing {

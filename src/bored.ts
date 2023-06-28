@@ -17,8 +17,11 @@ export function useBored() {
     const loading = ref(false)
 
     const fetch = async (url : string) =>{
-        const boredResponse = await axios.get<Activity>(url)
-        data.value = boredResponse.data
+        await axios.get<Activity>(url).then(function (response) {
+            data.value = response.data
+          }).catch((error) => {
+            error = error.toJSON();
+        });
     }
 
     return { data, error, loading, fetch }
