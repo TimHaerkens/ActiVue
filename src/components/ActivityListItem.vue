@@ -25,24 +25,11 @@ defineProps(["activity"])
         
 
       </div>
-      <h1>{{ activity.activity }}</h1>
+      <h3>{{ activity.activity }}</h3>
       
-      <a v-if="activity.link!=''" :href="activity.link" class="link"><p>Click here for more info!</p></a> <br/>
+      <a v-if="activity.link!=''" :href="activity.link" class="link"><p>info</p></a> <br/>
       
-      <p>Lorem ipsum dolor sit amet, <br/>
-      consectetur adipiscing elit.</p>
-    </div>
-
-    <div style="height:110px"></div>
-    <div class="like-wrapper">
-      <div class="button-wrapper"> 
-        <Button @click="$emit('dislikeActivity')" class="outline hover-fade">NOT HAPPY</button>
-        <Button @click="$emit('likeActivity')" class="fill hover-glow"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
-      </div>
-      <div class="text-wrapper animate pop">
-        <p class="primary" v-if="activityStore.isLiked(activity)">You like this activity</p>
-        <p class="secondary" v-if="activityStore.isDisliked(activity)">You don't like this activity</p>
-      </div>
+     
     </div>
 
 
@@ -57,8 +44,6 @@ defineProps(["activity"])
   display: flex;
   flex-direction: column;
   width:40vw;
-
-  min-height: 500px;
 
   padding: 38px;  
   margin: 0 auto;

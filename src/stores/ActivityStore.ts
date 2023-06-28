@@ -37,21 +37,21 @@ export const useActivityStore = defineStore("ActivityStore", () => {
         return (dislikes.value.find(function(value){return value.key == activity.key}) !== undefined);
     }
 
-    const priceRating = computed(() => {
-        if(activity.value==null)return 0;
-        return Math.floor(activity.value.price*5)
-    })
+    const priceRating = (activity: Activity) => {
+        if(activity==null)return 0;
+        return Math.floor(activity.price*5)
+    }
 
-    const priceText = computed(() => {
-        if(activity.value==null)return 'a';
+    const priceText = (activity: Activity) => {
+        if(activity==null)return '';
         return [
             "This will cost you nothing",
             "This will cost you a little bit",
             "This will cost you some money",
             "This will cost you quite a lot",
             "This will cost you a lot of money",
-        ][priceRating.value]
-    })
+        ][priceRating(activity)]
+    }
 
 
     return{
