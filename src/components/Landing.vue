@@ -1,5 +1,12 @@
 <script setup lang="ts">
+  import { ref } from 'vue';
   import Button from '@/components/Button.vue'
+  import { useBored } from "@/bored"
+  
+  const boredEndpoint = 'https://www.boredapi.com/api/';
+  const boredUrl = ref(boredEndpoint+'activity');
+  const { data, error, loading, fetch} = useBored();
+
 </script>
 
 <template>
@@ -10,7 +17,11 @@
         Don't worry. We got you covered!
       </h3>
 
-      <Button>Give me an activity</Button>
+      <Button @click="fetch(boredUrl)">Give me an activity</Button>
+
+      <div v-if="data!=null">
+        {{ data }}
+      </div>
 
     </div>
   </div>
