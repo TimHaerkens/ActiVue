@@ -21,9 +21,11 @@ const loading = ref(false);
       <h1 class="gradient">Are you bored?</h1>
       <h3>Don't worry. We got you covered!</h3>
 
-      <Button v-if="activityStore.activity==null" @click="loading = true, activityStore.fetchActivity(boredUrl) " :class="'glow fill hover-zoom zoom-110 '+(loading?'loading':'')">Give me an activity</Button>
+      <Button v-if="activityStore.activity==null" @click="loading = true, activityStore.fetchActivity(boredUrl) " :class="'hover-glow fill '+(loading?'loading':'')">Give me an activity</Button>
       
-      <Activity v-if="activityStore.activity!=null" :activity="activityStore.activity" />
+      <Activity v-if="activityStore.activity!=null" :activity="activityStore.activity" 
+      @like-activity="activityStore.likeActivity(activityStore.activity)" 
+      @dislike-activity="activityStore.dislikeActivity(activityStore.activity), activityStore.fetchActivity(boredUrl)"/>
 
     </div>
   </div>

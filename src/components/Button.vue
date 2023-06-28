@@ -26,23 +26,23 @@ button{
   &.fill{
     color:white;
     background:$brand-secondary;
-  }
+  }  
 
-  &.glow{
-    &:hover{
-      background: linear-gradient(66deg,$brand-secondary,$brand-primary,$brand-secondary);
-      background-size: 500%;
-      animation: glowing 20s linear infinite;
-    }
-  }
+  &.hover-glow{
 
-  .hover{
-    &:hover{
-      transition: scale 50ms ease-in-out;
-      scale:102%;
-    }
+  &:hover{
+    background: linear-gradient(66deg,$brand-secondary,$brand-primary,$brand-secondary);
+    background-size: 500%;
+    animation: glowing 20s linear infinite;
   }
-  
+}
+
+&.hover-fade{
+  transition: all 150ms ease-in-out;
+  &:hover{
+    opacity:0.8;
+  }
+}
 
   &.loading{
     transition: scale 50ms ease-out;

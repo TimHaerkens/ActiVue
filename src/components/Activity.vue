@@ -4,8 +4,10 @@ import { mdiHeart, mdiAccount, mdiCurrencyEur } from '@mdi/js'
 import Button from '@/components/Button.vue'
 import { useActivityStore } from '@/stores/ActivityStore';
 
-defineProps(['activity'])
 const activityStore = useActivityStore();
+
+defineEmits(["likeActivity","dislikeActivity"])
+defineProps(["activity"])
 </script>
 
 <template>
@@ -30,8 +32,11 @@ const activityStore = useActivityStore();
       consectetur adipiscing elit.</p>
     </div>
     <div class="button-wrapper"> 
-      <Button class="outline hover">NOT HAPPY</button>
-      <Button class="fill hover"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
+      <Button @click="$emit('dislikeActivity')" class="outline hover-fade">NOT HAPPY</button>
+      <Button @click="$emit('likeActivity')" class="fill hover-glow"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
+    </div>
+    <div class="like-wrapper animate pop">
+      <p class="primary" v-if="activityStore.isLiked(activity)">You like this activity</p>
     </div>
   </div>
 </template>
@@ -59,6 +64,8 @@ h1{
   color: rgb(36, 46, 74);
   text-transform: uppercase;
   font-size: 2.5rem;
+  line-height:1.2em;
+  padding:22px 10px;
 }
 
 span{
@@ -74,6 +81,14 @@ p {
   font-size: 0.8rem;
   letter-spacing: 2px;
   text-transform: uppercase;
+
+  &.primary{
+    color:$brand-primary;
+  }
+}
+
+.like-wrapper{
+  height:2em;
 }
 
 .info-wrapper{
@@ -113,6 +128,7 @@ p {
 
 .button-wrapper{
   margin-top: 15px;
+  margin-bottom: 15px;
   button + button {
     margin-left: 10px;
   }
