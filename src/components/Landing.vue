@@ -1,12 +1,17 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import Button from '@/components/Button.vue'
-  import Activity from '@/components/Activity.vue'
-  import { useBored } from "@/bored"
-  
-  const boredEndpoint = 'https://www.boredapi.com/api/';
-  const boredUrl = ref(boredEndpoint+'activity');
-  const { data, error, loading, fetch} = useBored();
+import { ref } from 'vue';
+import Button from '@/components/Button.vue'
+import Activity from '@/components/Activity.vue'
+import { useActivityStore } from "@/stores/ActivityStore";
+
+import { useBored } from "@/bored"
+
+const activityStore = useActivityStore();
+
+const boredEndpoint = 'https://www.boredapi.com/api/';
+const boredUrl = ref(boredEndpoint+'activity');
+
+const loading = ref(false);
 
 </script>
 
@@ -16,8 +21,9 @@
       <h1 class="gradient">Are you bored?</h1>
       <h3>Don't worry. We got you covered!</h3>
 
-      <Button v-if="data==null" @click="fetch(boredUrl)" class="glow fill">Give me an activity</Button>
-      <Activity v-if="data!=null" :activity="data" />
+      <Button v-if="activityStore.activity==null" @click="loading = true, activityStore.fetchActivity(boredUrl) " :class="'glow fill hover-zoom zoom-110 '+(loading?'loading':'')">Give me an activity</Button>
+      
+      <Activity v-if="activityStore.activity!=null" :activity="activityStore.activity" />
 
     </div>
   </div>

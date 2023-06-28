@@ -35,6 +35,19 @@ button{
       animation: glowing 20s linear infinite;
     }
   }
+
+  .hover{
+    &:hover{
+      transition: scale 50ms ease-in-out;
+      scale:102%;
+    }
+  }
+  
+
+  &.loading{
+    transition: scale 50ms ease-out;
+    scale:0%;
+  }
 }
 
 @keyframes glowing {
