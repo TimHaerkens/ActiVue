@@ -25,7 +25,9 @@ const loading = ref(false);
       
       <Activity v-if="activityStore.activity!=null" :activity="activityStore.activity" 
       @like-activity="activityStore.likeActivity(activityStore.activity)" 
-      @dislike-activity="activityStore.dislikeActivity(activityStore.activity), activityStore.fetchActivity(boredUrl)"/>
+      @dislike-activity="activityStore.dislikeActivity(activityStore.activity)"/>
+
+      <Button v-if="activityStore.activity!=null" @click="activityStore.fetchActivity(boredUrl)" :class="'hover-glow fill '">Give me a new activity </Button>
 
     </div>
   </div>

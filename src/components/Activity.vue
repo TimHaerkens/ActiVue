@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiHeart, mdiAccount, mdiCurrencyEur } from '@mdi/js'
+import { mdiHeart, mdiAccount, mdiCurrencyEur, mdiArrowRight } from '@mdi/js'
 import Button from '@/components/Button.vue'
 import { useActivityStore } from '@/stores/ActivityStore';
 
@@ -15,7 +15,7 @@ defineProps(["activity"])
     <div class="wrapper">
       <div class="info-wrapper">
         <div class="participants">
-          <svg-icon v-for="(p) in activity.participants" type="mdi" :path="mdiAccount" :size="25"></svg-icon>
+          <svg-icon v-for="(p) in 5" type="mdi" :path="mdiAccount" :size="25" :class="p <= activity.participants ? 'primary' : 'secondary'"></svg-icon>
         </div>
 
         <div class="price">
@@ -31,13 +31,17 @@ defineProps(["activity"])
       <p>Lorem ipsum dolor sit amet, <br/>
       consectetur adipiscing elit.</p>
     </div>
-    <div class="button-wrapper"> 
-      <Button @click="$emit('dislikeActivity')" class="outline hover-fade">NOT HAPPY</button>
-      <Button @click="$emit('likeActivity')" class="fill hover-glow"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
+    <div class="like-wrapper">
+      <div class="button-wrapper"> 
+        <Button @click="$emit('dislikeActivity')" class="outline hover-fade">NOT HAPPY</button>
+        <Button @click="$emit('likeActivity')" class="fill hover-glow"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
+      </div>
+      <div class="text-wrapper animate pop">
+        <p class="primary" v-if="activityStore.isLiked(activity)">You like this activity</p>
+        <p class="secondary" v-if="activityStore.isDisliked(activity)">You don't like this activity</p>
+      </div>
     </div>
-    <div class="like-wrapper animate pop">
-      <p class="primary" v-if="activityStore.isLiked(activity)">You like this activity</p>
-    </div>
+
   </div>
 </template>
 
@@ -45,12 +49,16 @@ defineProps(["activity"])
 @import '@/assets/variables.scss';
 
 .container {
+  position:relative;
   display: flex;
   flex-direction: column;
   width:40vw;
 
+  height: 500px;
+
   padding: 38px;  
   margin: 0 auto;
+  margin-bottom: 25px;
 
   border-radius: 1rem;
   box-shadow: 0 2.5rem 2rem -2rem rgba(36,46,74,.08);
@@ -66,6 +74,8 @@ h1{
   font-size: 2.5rem;
   line-height:1.2em;
   padding:22px 10px;
+  transition: all 150ms ease-in-out;
+
 }
 
 span{
@@ -88,6 +98,12 @@ p {
 }
 
 .like-wrapper{
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width:100%;
+}
+.text-wrapper{
   height:2em;
 }
 
@@ -100,6 +116,10 @@ p {
   margin-bottom:1em;
 
   .participants{
+    .secondary{
+      opacity:0.3
+    }
+
     svg{
       transition: all 250ms ease-in-out;
       &:hover{

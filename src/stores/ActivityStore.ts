@@ -18,12 +18,12 @@ export const useActivityStore = defineStore("ActivityStore", () => {
         if(likes.value.find(function(value){return value.key == activity.key}) !== undefined)return;
         //Add to likes and potentially remove from dislikes
         likes.value.push(activity);
-        dislikes.value = likes.value.filter(function(value){return value.key != activity.key});
+        dislikes.value = dislikes.value.filter(function(value){return value.key != activity.key});
     }
 
     const dislikeActivity = (activity: Activity) => {
         if(activity == null)return;
-        if(likes.value.find(function(value){return value.key == activity.key}) !== undefined)return;
+        if(dislikes.value.find(function(value){return value.key == activity.key}) !== undefined)return;
         //Add to dislikes and potentially remove from likes
         dislikes.value.push(activity);
         likes.value = likes.value.filter(function(value){return value.key != activity.key});
