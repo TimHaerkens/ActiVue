@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Button from '@/components/Button.vue'
-import Activity from '@/components/ActivityCard.vue'
 import ActivityListItem from '@/components/ActivityListItem.vue'
 import { useActivityStore } from "@/stores/ActivityStore";
 
@@ -18,9 +17,17 @@ const boredUrl = ref(boredEndpoint+'activity');
     <div class="wrapper">
     <div class="landing">
       <h1 class="gradient">Favorites</h1>
-      <h3>Here are your favorite activities</h3>
+      
+      <div v-if="activityStore.likes.length>0">
+        <h3>Here are your favorite activities</h3>
+        <ActivityListItem v-for="(activity) in activityStore.likes" :activity="activity"></ActivityListItem>
+      </div>
 
-      <ActivityListItem v-for="(activity) in activityStore.likes" :activity="activity"></ActivityListItem>
+      <div v-else>
+        <h3>You don't have any favorites yet! Go and find some fun things to do.</h3>
+      </div>
+
+      <RouterLink to="/"><Button class="hover-glow fill ">Go back</Button></RouterLink>
 
     </div>
   </div>
