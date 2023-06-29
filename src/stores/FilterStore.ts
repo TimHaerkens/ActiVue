@@ -20,10 +20,13 @@ export const useFilterStore = defineStore("FilterStore", () => {
     }
 
     const toggleParticipants = () => {
+        if(participants.value == null)participants.value = 0;
         participants.value *= -1;
     }
 
     const togglePrice = () => {
+        if(minPrice.value == null)minPrice.value = 0;
+        if(maxPrice.value == null)maxPrice.value = 0;
         minPrice.value *= -1;
         maxPrice.value *= -1;
     }
