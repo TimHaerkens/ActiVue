@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Button from '@/components/Button.vue'
-import Activity from '@/components/Activity.vue'
+import Activity from '@/components/ActivityCard.vue'
 import ActivityListItem from '@/components/ActivityListItem.vue'
 import { useActivityStore } from "@/stores/ActivityStore";
 
