@@ -4,6 +4,11 @@ import Button from '@/components/Button.vue'
 import Activity from '@/components/ActivityCard.vue'
 import Error from '@/components/Error.vue'
 import Filters from '@/components/Filters.vue'
+
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiFilterCog  } from '@mdi/js'
+
+
 import { useActivityStore } from "@/stores/ActivityStore";
 import { useFilterStore } from '@/stores/FilterStore';
 
@@ -30,12 +35,16 @@ const loading = ref(false);
       @like-activity="activityStore.likeActivity(activityStore.activity)" 
       @dislike-activity="activityStore.dislikeActivity(activityStore.activity)"/>
       
-      <Button v-if="activityStore.activity!=null || activityStore.error" @click="activityStore.fetchActivity(boredUrl+filterStore.getFilters())" :class="'hover-glow fill '">Give me a new activity </Button>
+      <div class="button-wrapper" v-if="activityStore.activity!=null">
+        <Button v-if="activityStore.activity!=null || activityStore.error" @click="activityStore.fetchActivity(boredUrl+filterStore.getFilters())" :class="'hover-glow fill '">Give me a new activity </Button>
+        <Button  @click="filterStore.toggleFilters()" class="hover-fade outline" ><svg-icon type="mdi" :path="mdiFilterCog" :size="20"></svg-icon></button>
+      </div>
+      
 
       <Filters v-if="filterStore.filtersEnabled"/>
 
       <Button v-if="activityStore.activity==null" @click="loading = true, activityStore.fetchActivity(boredUrl+filterStore.getFilters()) " :class="'hover-glow fill '+(loading?'disappear':'')">Give me an activity</Button><br />
-      <Button  @click="filterStore.enableFilters()" :class="'hover-fade outline '+(filterStore.filtersEnabled?'disappear':'')">I want to use filters </Button>
+      <Button v-if="activityStore.activity==null"  @click="filterStore.enableFilters()" :class="'hover-fade outline '+(filterStore.filtersEnabled?'disappear':'')">I want to use filters </Button>
       
 
     </div>
@@ -60,6 +69,4 @@ h3 {
   display:flex;
   flex-direction:column;
 }
-
-
 </style>

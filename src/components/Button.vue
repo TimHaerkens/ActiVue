@@ -6,6 +6,8 @@
 <style scoped lang="scss">
 @import '@/assets/variables.scss';
 
+
+
 button{
   cursor:pointer;
 
@@ -18,6 +20,8 @@ button{
   vertical-align:middle;
 
   border-radius: 50rem;
+  border:none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 1rem;
 
   &:disabled{
@@ -25,6 +29,8 @@ button{
   }
 
   &.outline{
+    background:#f0f0f0;
+    border:2px solid rgba(146, 146, 146, 0.4);
     color: rgb(36, 46, 74);
   }
 

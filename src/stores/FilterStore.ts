@@ -14,6 +14,10 @@ export const useFilterStore = defineStore("FilterStore", () => {
         filtersEnabled.value = true;
     }
 
+    const toggleFilters = () => {
+        filtersEnabled.value = !filtersEnabled.value;
+    }
+
     const toggleParticipants = () => {
         participants.value *= -1;
     }
@@ -47,7 +51,7 @@ export const useFilterStore = defineStore("FilterStore", () => {
     }
 
     return{
-        enableFilters, filtersEnabled,
+        enableFilters, toggleFilters, filtersEnabled,
         toggleParticipants, togglePrice,
         minPrice, maxPrice, setPrice, setMinPrice, setMaxPrice,
         participants, setParticipants,

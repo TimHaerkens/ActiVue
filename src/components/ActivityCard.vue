@@ -121,9 +121,6 @@ p {
 .button-wrapper{
   margin-top: 15px;
   margin-bottom: 15px;
-  button + button {
-    margin-left: 10px;
-  }
 }
 
 @media (max-width: 1024px) {

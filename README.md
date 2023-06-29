@@ -1,10 +1,10 @@
 # ActiVue
 
-This template should help get you started developing with Vue 3 in Vite.
+Are you bored? No worries, we've got you covered!
 
-## Recommended IDE Setup
+## Bored API
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Using the [Bored API](https://www.boredapi.com/) you can easily get a suggestion on a fun activity to do.
 
 ## Type Support for `.vue` Imports in TS
 
