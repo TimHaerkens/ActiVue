@@ -7,3 +7,7 @@ interface Activity {
     link: string,
     key: string,
 }
+
+interface BoredError {
+    error: string
+}

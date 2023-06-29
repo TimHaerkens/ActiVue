@@ -27,17 +27,16 @@ defineProps(["activity"])
       </div>
       <h1>{{ activity.activity }}</h1>
       
-      <a v-if="activity.link!=''" :href="activity.link" class="link"><p>Click here for more info!</p></a> <br/>
+      <a v-if="activity.link!=''" :href="activity.link" target="_blank" class="link"><p>Click here for more info!</p></a> <br/>
       
-      <p>Lorem ipsum dolor sit amet, <br/>
-      consectetur adipiscing elit.</p>
+      <p>Category: {{ activity.type }}</p>
     </div>
 
     <div style="height:110px"></div>
     <div class="like-wrapper">
       <div class="button-wrapper"> 
-        <Button @click="$emit('dislikeActivity')" class="outline hover-fade">NOT HAPPY</button>
-        <Button @click="$emit('likeActivity')" class="fill hover-glow"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
+        <Button @click="$emit('dislikeActivity')" class="outline hover-fade" :disabled="activityStore.isDisliked(activity)">NOT HAPPY</button>
+        <Button @click="$emit('likeActivity')" class="fill hover-glow" :disabled="activityStore.isLiked(activity)"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
       </div>
       <div class="text-wrapper animate pop">
         <p class="primary" v-if="activityStore.isLiked(activity)">You like this activity</p>
@@ -56,17 +55,19 @@ defineProps(["activity"])
   position:relative;
   display: flex;
   flex-direction: column;
+  
   width:40vw;
-
   min-height: 500px;
 
   padding: 38px;  
   margin: 0 auto;
-  margin-bottom: 25px;
+  margin-top: 2em;
+  margin-bottom: 2em;
 
   border-radius: 1rem;
   box-shadow: 0 2.5rem 2rem -2rem rgba(36,46,74,.08);
   border: 1px solid #e2e4e7;
+  background-color:white;
 
   transition: scale 50ms ease-out;
 }
@@ -79,7 +80,6 @@ h1{
   line-height:1.2em;
   padding:22px 10px;
   transition: all 150ms ease-in-out;
-
 }
 
 span{
@@ -101,18 +101,6 @@ p {
   }
 }
 
-a.link{
-  p{
-    transition:color 120ms linear;
-    &:hover{
-      font-weight:600;
-      color:$brand-primary;
-    }
-  }
-  color:$brand-primary;
-
-}
-
 .like-wrapper{
   position: absolute;
   bottom: 15px;
@@ -125,41 +113,9 @@ a.link{
 
 .info-wrapper{
   width:100%;
-
   display:flex;
   justify-content: space-between;
-
   margin-bottom:1em;
-
-  .participants{
-    .secondary{
-      opacity:0.3
-    }
-
-    svg{
-      transition: all 250ms ease-in-out;
-      &:hover{
-        scale:120%;
-      }
-    }
-  }
-
-  .price{
-    .primary{
-      color:$brand-primary;
-    }
-    .secondary{
-      opacity:0.3
-    }
-
-    svg{
-      transition: all 250ms ease-in-out;
-      &:hover{
-        scale:120%;
-      }
-    }
-  }
-
 }
 
 .button-wrapper{
@@ -169,8 +125,6 @@ a.link{
     margin-left: 10px;
   }
 }
-
-
 
 @media (max-width: 1024px) {
   .container {

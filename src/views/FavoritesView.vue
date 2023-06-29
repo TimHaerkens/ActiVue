@@ -22,7 +22,6 @@ const boredUrl = ref(boredEndpoint+'activity');
 
       <ActivityListItem v-for="(activity) in activityStore.likes" :activity="activity"></ActivityListItem>
 
-
     </div>
   </div>
   </main>

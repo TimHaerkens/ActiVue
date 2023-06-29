@@ -19,7 +19,7 @@ const menuActive = ref(false);
     </div>
 
     <div class='profile' @click="menuActive=!menuActive">
-      <span :class="'username '+(menuActive?'active':'')" ref="profil" >
+      <span :class="'username '+(menuActive?'active':'')" >
         <span class="avatar"></span>
         <span>{{userStore.username}}</span>
       </span>

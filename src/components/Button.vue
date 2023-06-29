@@ -9,15 +9,20 @@
 button{
   cursor:pointer;
 
+  height:50px;
+  margin:0 auto;
+
   font-size: 1rem;
   font-weight:600;
   font-variant:small-caps;
-
-  height:50px;
   vertical-align:middle;
 
   border-radius: 50rem;
   padding: 1rem;
+
+  &:disabled{
+    opacity:0.5;
+  }
 
   &.outline{
     color: rgb(36, 46, 74);
@@ -30,7 +35,7 @@ button{
 
   &.hover-glow{
 
-  &:hover{
+  &:hover:not(:disabled){
     background: linear-gradient(66deg,$brand-secondary,$brand-primary,$brand-secondary);
     background-size: 500%;
     animation: glowing 20s linear infinite;
@@ -39,12 +44,12 @@ button{
 
 &.hover-fade{
   transition: all 150ms ease-in-out;
-  &:hover{
+  &:hover:not(:disabled){
     opacity:0.8;
   }
 }
 
-  &.loading{
+  &.disappear{
     transition: scale 50ms ease-out;
     scale:0%;
   }

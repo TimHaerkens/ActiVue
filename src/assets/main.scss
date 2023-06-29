@@ -1,6 +1,10 @@
 @import './base.css';
 @import '@/assets/variables.scss';
 
+body{
+  background-color:rgb(250, 250, 250);
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -16,6 +20,49 @@
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
 }
+
+.participants{
+  .secondary{
+    opacity:0.3
+  }
+
+  svg{
+    cursor:pointer;
+    transition: all 250ms ease-in-out;
+    &:hover{
+      scale:120%;
+    }
+  }
+}
+
+.price{
+  .primary{
+    color:$brand-secondary;
+  }
+  .secondary{
+    opacity:0.3
+  }
+
+  svg{
+    cursor:pointer;
+    transition: all 250ms ease-in-out;
+    &:hover{
+      scale:120%;
+    }
+  }
+}
+
+a.link{
+  p{
+    transition:color 120ms linear;
+    &:hover{
+      font-weight:600;
+      color:$brand-primary;
+    }
+  }
+  color:$brand-primary;
+}
+
 
 .animate {
   animation-duration: 0.3s;
@@ -36,6 +83,13 @@
   100% {
     opacity: 1;
     transform: scale(1, 1);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
   }
 }
 

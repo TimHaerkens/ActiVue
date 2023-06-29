@@ -27,8 +27,9 @@ defineProps(["activity"])
       </div>
       <h3>{{ activity.activity }}</h3>
       
-      <a v-if="activity.link!=''" :href="activity.link" class="link"><p>info</p></a> <br/>
+      <a v-if="activity.link!=''" :href="activity.link" class="link"><p>more info</p></a> <br/>
       
+      <p>Category: {{ activity.type }}</p>
      
     </div>
 
@@ -86,24 +87,7 @@ p {
   }
 }
 
-a.link{
-  p{
-    transition:color 120ms linear;
-    &:hover{
-      font-weight:600;
-      color:$brand-primary;
-    }
-  }
-  color:$brand-primary;
 
-}
-
-.like-wrapper{
-  position: absolute;
-  bottom: 15px;
-  left: 0;
-  width:100%;
-}
 .text-wrapper{
   height:2em;
 }
@@ -115,47 +99,7 @@ a.link{
   justify-content: space-between;
 
   margin-bottom:1em;
-
-  .participants{
-    .secondary{
-      opacity:0.3
-    }
-
-    svg{
-      transition: all 250ms ease-in-out;
-      &:hover{
-        scale:120%;
-      }
-    }
-  }
-
-  .price{
-    .primary{
-      color:$brand-primary;
-    }
-    .secondary{
-      opacity:0.3
-    }
-
-    svg{
-      transition: all 250ms ease-in-out;
-      &:hover{
-        scale:120%;
-      }
-    }
-  }
-
 }
-
-.button-wrapper{
-  margin-top: 15px;
-  margin-bottom: 15px;
-  button + button {
-    margin-left: 10px;
-  }
-}
-
-
 
 @media (max-width: 1024px) {
   .container {
