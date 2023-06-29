@@ -1,9 +1,10 @@
+import {ref} from 'vue';
 import { defineStore, acceptHMRUpdate } from "pinia";
 import { useStorage } from "@vueuse/core";
 
 export const useFilterStore = defineStore("FilterStore", () => {
 
-    const filtersEnabled = useStorage("FilterStore:enabled", false);
+    const filtersEnabled = ref(false);
 
     const minPrice = useStorage("FilterStore:minPrice", -1);
     const maxPrice = useStorage("FilterStore:maxPrice", -1);
