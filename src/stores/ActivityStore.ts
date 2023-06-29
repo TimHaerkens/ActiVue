@@ -15,7 +15,10 @@ export const useActivityStore = defineStore("ActivityStore", () => {
 
     const likeActivity = (activity: Activity) => {
         if(activity == null)return;
-        if(likes.value.find(function(value){return value.key == activity.key}) !== undefined)return;
+        if(likes.value.find(function(value){return value.key == activity.key}) !== undefined){
+            likes.value = likes.value.filter(function(value){return value.key != activity.key});
+            return;
+        }
         //Add to likes and potentially remove from dislikes
         likes.value.push(activity);
         dislikes.value = dislikes.value.filter(function(value){return value.key != activity.key});
@@ -23,7 +26,11 @@ export const useActivityStore = defineStore("ActivityStore", () => {
 
     const dislikeActivity = (activity: Activity) => {
         if(activity == null)return;
-        if(dislikes.value.find(function(value){return value.key == activity.key}) !== undefined)return;
+        if(dislikes.value.find(function(value){return value.key == activity.key}) !== undefined){
+            dislikes.value = dislikes.value.filter(function(value){return value.key != activity.key});
+            return;
+        }
+
         //Add to dislikes and potentially remove from likes
         dislikes.value.push(activity);
         likes.value = likes.value.filter(function(value){return value.key != activity.key});

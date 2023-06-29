@@ -24,7 +24,7 @@ button{
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 1rem;
 
-  &:disabled{
+  &[selected="true"]{
     opacity:0.5;
   }
 
@@ -41,7 +41,7 @@ button{
 
   &.hover-glow{
 
-  &:hover:not(:disabled){
+  &:hover:not([selected="true"]){
     background: linear-gradient(66deg,$brand-secondary,$brand-primary,$brand-secondary);
     background-size: 500%;
     animation: glowing 20s linear infinite;
@@ -50,7 +50,7 @@ button{
 
 &.hover-fade{
   transition: all 150ms ease-in-out;
-  &:hover:not(:disabled){
+  &:hover:not([selected="true"]){
     opacity:0.8;
   }
 }

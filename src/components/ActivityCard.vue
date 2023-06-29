@@ -35,8 +35,8 @@ defineProps(["activity"])
     <div style="height:110px"></div>
     <div class="like-wrapper">
       <div class="button-wrapper"> 
-        <Button @click="$emit('dislikeActivity')" class="outline hover-fade" :disabled="activityStore.isDisliked(activity)">NOT HAPPY</button>
-        <Button @click="$emit('likeActivity')" class="fill hover-glow" :disabled="activityStore.isLiked(activity)"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
+        <Button @click="$emit('dislikeActivity')" class="outline hover-fade" :selected="activityStore.isDisliked(activity)">NOT HAPPY</button>
+        <Button @click="$emit('likeActivity')" class="fill hover-glow" :selected="activityStore.isLiked(activity)"><svg-icon type="mdi" :path="mdiHeart" :size="20"></svg-icon></button>
       </div>
       <div class="text-wrapper animate pop">
         <p class="primary" v-if="activityStore.isLiked(activity)">You like this activity</p>
