@@ -5,42 +5,26 @@ Are you bored? No worries, we've got you covered!
 ## Bored API
 
 Using the [Bored API](https://www.boredapi.com/) you can easily get a suggestion on a fun activity to do.
+The API lets you ask for an activity based on a request with optional parameters (price, participants).
+It will respond with an activity with a description, type, participants, price, link (if available), a unique key and accessibility.
 
-## Type Support for `.vue` Imports in TS
+## Filters
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+At the moment, two filters can be used to narrow down your search:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+1. Participants: Select with how many people you want to do an activity with one being alone.
+    
+2. Price: Select a minimum price and a maximum price with 0 being costless and 5 euro signs being very expensive
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Like / Dislike
 
-## Customize configuration
+On an activity you can press the 'heart' icon to like an activity and it will be added to your favorites page.
+You can also press 'NOT HAPPY' and it will be added to your dislikes. A disliked activity will still be shown but it might be an idea to disable disliked activities.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Favorites
 
-## Project Setup
+If you click the username in the top right corner you can click on MY FAVORITES to go to the favorites page and see which activities you pressed LIKE on.
 
-```sh
-npm install
-```
+## And that's it!
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Enjoy this little app and go do some cool stuff!

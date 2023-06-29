@@ -48,8 +48,9 @@ export const useActivityStore = defineStore("ActivityStore", () => {
             "This will cost you nothing",
             "This will cost you a little bit",
             "This will cost you some money",
-            "This will cost you quite a lot",
+            "This will cost you quite a bit",
             "This will cost you a lot of money",
+            "Say goodbye to your life savings",
         ][priceRating(activity)]
     }
 
