@@ -27,7 +27,9 @@ const loading = ref(false);
     <div class="wrapper">
     <div class="landing">
       <h1 class="gradient">Are you bored?</h1>
-      <h3>Don't worry. We've got you covered!</h3><br/>
+      <h3>Don't worry. We've got you covered!</h3>
+
+      <div space />
 
       <Error v-if="activityStore.error" :error="activityStore.error"/>
       
@@ -39,11 +41,11 @@ const loading = ref(false);
         <Button v-if="activityStore.activity!=null || activityStore.error" @click="activityStore.fetchActivity(boredUrl+filterStore.getFilters())" :class="'hover-glow fill '">Give me a new activity </Button>
         <Button  @click="filterStore.toggleFilters()" class="hover-fade outline" ><svg-icon type="mdi" :path="mdiFilterCog" :size="20"></svg-icon></button>
       </div>
-      
 
       <Filters v-if="filterStore.filtersEnabled"/>
 
-      <Button v-if="activityStore.activity==null" @click="loading = true, activityStore.fetchActivity(boredUrl+filterStore.getFilters()) " :class="'hover-glow fill '+(loading?'disappear':'')">Give me an activity</Button><br />
+      <Button v-if="activityStore.activity==null" @click="loading = true, activityStore.fetchActivity(boredUrl+filterStore.getFilters()) " :class="'hover-glow fill '+(loading?'disappear':'')">Give me an activity</Button>
+      <div space />
       <Button v-if="activityStore.activity==null"  @click="filterStore.enableFilters()" :class="'hover-fade outline '+(filterStore.filtersEnabled?'disappear':'')">I want to use filters </Button>
       
 
@@ -69,4 +71,6 @@ h3 {
   display:flex;
   flex-direction:column;
 }
+
+
 </style>

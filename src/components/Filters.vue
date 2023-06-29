@@ -61,7 +61,6 @@ const filterStore = useFilterStore();
   .filters-text{
     align-items: center;
     
-    font-family:'Lato';
     font-size:1.4rem;
     margin-bottom:1.2em;
 

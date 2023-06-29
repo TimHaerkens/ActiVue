@@ -83,7 +83,6 @@ const menuActive = ref(false);
     display: flex;
     align-items: center;
     
-    font-family:'Lato';
     font-size:1.2rem;
 
     transition: all linear 0.2s;
